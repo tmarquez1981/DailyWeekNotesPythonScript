@@ -55,9 +55,14 @@ def main():
     #gets the day of the week
     day_of_week = calendar.day_name[now.weekday()]
 
-    #if day of week is not Saturday or Sunday
-    if day_of_week != 'Saturday' or day_of_week != 'Sunday':
+    #boolean for weekend day
+    is_weekend = False
 
+    #if day of week is Saturday or Sunday, do not write .txt file
+    if day_of_week == 'Saturday' or day_of_week == 'Sunday':
+        is_weekend = True
+
+    if not is_weekend:
         #name of text file
         name_of_file = day_of_week + '.txt'
 
