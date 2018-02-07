@@ -46,7 +46,8 @@ def main():
         
     #if current week ending folder has not been created, create it
     if not is_path:
-        os.makedirs(week_end_date_str)
+        #os.makedirs(week_end_date_str)
+        os.makedirs(path_of_week)
 
     #if current week is already created, get the path
     current_week_path = os.path.join(parent_path, week_end_date_str)
@@ -54,16 +55,20 @@ def main():
     #gets the day of the week
     day_of_week = calendar.day_name[now.weekday()]
 
-    #name of text file
-    name_of_file = day_of_week + '.txt'
+    #if day of week is not Saturday or Sunday
+    if day_of_week != 'Saturday' or day_of_week != 'Sunday':
 
-    #complete file name
-    completeName = os.path.join(current_week_path, name_of_file)
+        #name of text file
+        name_of_file = day_of_week + '.txt'
 
-    #finally, write the file
-    file = open(completeName, "w")
-    file.write(contents)
-    file.close
+        #complete file name
+        completeName = os.path.join(current_week_path, name_of_file)
+
+        #finally, write the file if file has not been created
+ 
+        file = open(completeName, "w")
+        file.write(contents)
+        file.close
 
 if __name__ == "__main__":
     main()
